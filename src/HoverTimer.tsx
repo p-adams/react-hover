@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 function HoverTimer() {
+  const [item, setItem] = useState<{ label: string } | null>(null);
   const items: any[] = [{ label: "foo" }, { label: "bar" }, { label: "baz" }];
   const itemsMappedToColors = items.map((item) => ({
     ...item,
@@ -11,7 +14,12 @@ function HoverTimer() {
     <div className="hover-container">
       <ul>
         {itemsMappedToColors.map((item) => (
-          <li key={item.label} style={{ backgroundColor: item.color }}>
+          <li
+            key={item.label}
+            style={{ backgroundColor: item.color }}
+            onMouseEnter={(e) => setItem(item)}
+            onMouseLeave={() => setItem(null)}
+          >
             {item.label}
           </li>
         ))}
