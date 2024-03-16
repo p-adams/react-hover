@@ -1,8 +1,11 @@
 import { useState } from "react";
-
+interface Item {
+  label?: string;
+  color?: string;
+}
 function HoverTimer() {
-  const [item, setItem] = useState<{ label: string } | null>(null);
-  const items: any[] = [{ label: "foo" }, { label: "bar" }, { label: "baz" }];
+  const [item, setItem] = useState<Item | null>(null);
+  const items: Item[] = [{ label: "foo" }, { label: "bar" }, { label: "baz" }];
   const itemsMappedToColors = items.map((item) => ({
     ...item,
     color: `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
